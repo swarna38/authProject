@@ -13,7 +13,8 @@ class DocumentPolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        //check user role admin or manager then return true
+        return in_array($user->role, ['admin','manager']);
     }
 
     /**
