@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Document;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class DocumentsController extends Controller
 {
@@ -12,6 +13,9 @@ class DocumentsController extends Controller
      */
     public function index()
     {
+
+        //check view authorize or not
+        Gate::authorize('viewAny', Document::class);
         $documents = Document::all();
         return view('documents.index', compact('documents'));
 

@@ -13,7 +13,7 @@ class DocumentPolicy
      */
     public function viewAny(User $user): bool
     {
-        return in_array($user->role, ['admin','manager']);
+        return true;
     }
 
     /**
@@ -48,4 +48,19 @@ class DocumentPolicy
         return false;
     }
 
+    /**
+     * Determine whether the user can restore the model.
+     */
+    public function restore(User $user, Document $document): bool
+    {
+        return false;
+    }
+
+    /**
+     * Determine whether the user can permanently delete the model.
+     */
+    public function forceDelete(User $user, Document $document): bool
+    {
+        return false;
+    }
 }
