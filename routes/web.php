@@ -26,10 +26,10 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function(){
 
     //rosource use shortcut its create auto 7 route such that edit update index
-    Route::resource('documents',[DocumentsController::class]);
+    Route::resource('documents',DocumentsController::class);
 
     //publish or not
-    Route::post('documents/{documents}/publish',[DocumentsController::class, 'publish'])->name  ('documents.publish');
+    // Route::post('documents/{documents}/publish',[DocumentsController::class, 'publish'])->name  ('documents.publish');
 });
 
 
