@@ -40,10 +40,13 @@ class DocumentsController extends Controller
     // /**
     //  * Display the specified resource.
     //  */
-    // public function show(Documents $documents)
-    // {
-    //     //
-    // }
+    public function show(Document $document)
+    {
+        Gate::authorize('view', $document);
+        print '<pre>';
+        print_r($document);
+        print '<pre>';
+    }
 
     // /**
     //  * Show the form for editing the specified resource.

@@ -14,7 +14,7 @@ class DocumentPolicy
     public function viewAny(User $user): bool
     {
         //check user role admin or manager then return true
-        return in_array($user->role, ['admin','manager']);
+        return in_array($user->role, ['admin','manager','member']);
     }
 
     /**
@@ -22,7 +22,10 @@ class DocumentPolicy
      */
     public function view(User $user, Document $document): bool
     {
-        return false;
+        //which view show check
+        return $user->role === 'admin' ||
+        $document->user_id === $user->id ||
+        $document->Is_published && in_array($user->role, ['admin','manager']);
     }
 
     /**
